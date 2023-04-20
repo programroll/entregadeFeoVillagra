@@ -122,7 +122,7 @@ liCategorias.addEventListener("click", motrarCategorias)
 /* Armado de tarjetas dinámicas */
 
 let inputBuscador = document.getElementById("buscador")
-inputBuscador.addEventListener("input", filtrarPorImput)
+inputBuscador.addEventListener("input", filtrarPorInput)
 
 function cargarTarjetas(arrayProductos) {
     const productos = document.getElementById("productos")
@@ -170,8 +170,8 @@ function filtrarPorCategoria() {
 
 }
 
-function filtrarPorImput() {
-    let arrayPorInput = listaProductos.filter(producto => producto.nombre.toLowerCase().includes(inputBuscador.value))
+function filtrarPorInput() {
+    let arrayPorInput = listaProductos.filter(producto => producto.nombre.toLowerCase().includes(inputBuscador.value.toLowerCase()))
     cargarTarjetas(arrayPorInput)/* mejorar para mayusculas */
 }
 
