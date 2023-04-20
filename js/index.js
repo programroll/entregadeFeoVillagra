@@ -1,4 +1,48 @@
+let tienda = document.getElementById("tienda")
+let login = document.getElementById("login")
 
+
+//registrarse
+
+let usuario = document.getElementById("usuario")
+let contrasenia = document.getElementById("contrasenia")
+let registrarse = document.getElementById("registrarse")
+let formIniciarS = document.getElementById("formIniciarS")
+let formRegistro = document.getElementById("formRegistro")
+
+//if (usuario && contrasenia != "") {
+registrarse.addEventListener("click", () => {
+
+    let infoUsuario = { usuario: usuario.value, contrasenia: contrasenia.value }
+
+
+    localStorage.setItem("infoUsuario", JSON.stringify(infoUsuario))
+    console.log("usuario: " + usuario.value)
+    formIniciarS.classList.remove("ocultar")
+    formRegistro.classList.replace("mostrar","ocultar")
+
+    
+})
+//}
+
+//iniciar sesion
+let usuarioUs = document.getElementById("usuarioUs")
+let contraseniaUs = document.getElementById("contraseniaUs")
+let iniciarS = document.getElementById("iniciarS")
+
+//if (usuarioUs && contraseniaUs != "") {
+iniciarS.addEventListener("click", () => {
+
+    let infoUsuario = JSON.parse(localStorage.getItem("infoUsuario"))
+    if (infoUsuario.usuario == usuarioUs.value && infoUsuario.contrasenia == contraseniaUs.value) {
+        login.classList.replace("mostrar", "ocultar")
+        tienda.classList.remove("ocultar")
+
+    } else {
+        alert("nono")
+    }
+})
+//} 
 
 /* Lista de productos */
 let listaProductos = [
@@ -82,11 +126,11 @@ inputBuscador.addEventListener("input", filtrarPorImput)
 
 function cargarTarjetas(arrayProductos) {
     const productos = document.getElementById("productos")
-    productos.innerHTML =""/* se borra todo el contenido dentro de productos para que no se agregen en cada vuelta*/
+    productos.innerHTML = ""/* se borra todo el contenido dentro de productos para que no se agregen en cada vuelta*/
     arrayProductos.forEach(({ categoria, nombre, imagen, precio, stock }) => {
         let tarjeta = document.createElement("div")
         tarjeta.className = "tarjeta"
-        
+
         tarjeta.innerHTML =
             `<h3>${nombre}</h3>
         <div>
@@ -120,7 +164,6 @@ function filtrarPorCategoria() {
             filtros.push(input.id)
         }
     }
-    console.log(filtros)
     let arrayFiltrado = listaProductos.filter(producto => filtros.includes(producto.categoria.toLowerCase()))
 
     cargarTarjetas(arrayFiltrado.length > 0 ? arrayFiltrado : listaProductos)
@@ -142,7 +185,7 @@ function mostrarCarrito() {
     campoCarrito.classList.toggle("ocultar")
 }
 
-/* Opciones */
+//Opciones
 
 function motrarCategorias() {
 
@@ -151,23 +194,6 @@ function motrarCategorias() {
 
 
 
-
-/* 
-listaProductos.forEach(({categoria, nombre, imagen, precio, stock}) => {
-    productos.innerHTML +=
-    `<div class="card">
-            
-            <h3>${nombre}</h3>
-            <div>
-                <img class="imagenes" src="${imagen}" alt="">
-            </div>
-            <p>Categoria: ${categoria}</p>
-            <p>${stock}u. en stock</p>
-            <p class="precio">$${precio}</p>
-            <button class="boton">Agregar al carrito</button>
-    </div>
-    `
-}) */
 
 
 
