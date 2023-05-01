@@ -82,6 +82,10 @@ h3{
     font-size: 25px;
 
 }
+.form-switch .form-check-input{
+    width: 45px;
+    height: 20px;
+}
 
 label {
     display: block;
@@ -181,4 +185,9 @@ label:hover {
 }
 .btn{
     margin-top: 1rem;
+}
+
+.form-check-input:checked{
+    background-color: #bbac9e;
+    border-color: #bbac9e;
 }
