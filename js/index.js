@@ -180,7 +180,7 @@ function agregarAlCarrito(e) {
                 id: productoBuscado.id,
                 nombre: productoBuscado.nombre,
                 precio: productoBuscado.precio,
-                unidades: 1,
+                unidades: 1, 
                 subtotal: productoBuscado.precio
             })
         }
